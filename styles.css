@@ -21,6 +21,10 @@ header {
     background-color: #333;
     padding: 15px;
     
+    justify-content: center; 
+    width: max-content;      
+    margin: 0 auto;          
+    border-radius: 12px;     
 }
 
 
@@ -61,7 +65,7 @@ header {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex; /* Esto centra el contenido */
+    display: flex; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -101,4 +105,60 @@ header {
 
 #btnReiniciar:hover {
     background-color: #45a049;
+}
+/*  Controles de Dificultad  */
+#controles {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btnDificultad {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+
+.btnDificultad:hover {
+    transform: scale(1.1); 
+    opacity: 0.9;
+}
+
+
+.facil { background-color: #4CAF50; }      /* Verde */
+.normal { background-color: #2196F3; }     /* Azul */
+.dificil { background-color: #FF9800; }    /* Naranja */
+.muy-dificil { background-color: #F44336; } /* Rojo */
+
+
+/*  MODO OSCURO  */
+/* Transicion para modo oscuro */
+body {
+   
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+
+
+body.modo-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/*  Hacer que el tablero resalte un poco más  */
+body.modo-oscuro #tablero {
+    background-color: #222;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+body.modo-oscuro header h1, 
+body.modo-oscuro header p {
+    color: #e0e0e0;
 }

@@ -1,18 +1,35 @@
+const bancoSimbolos = ['🚀', '👽', '👾', '🤖', '👻', '🍕', '🎮', '⚡', '🌟', '🍄', '🍎', '🐱', '🐶', '🚗', '🎈', '💎'];
 
- const simbolos = ['🚀', '🚀', '👽', '👽', '👾', '👾', '🤖', '🤖', '👻', '👻', '🍕', '🍕', '🎮', '🎮', '⚡', '⚡'];
-//const simbolos = ['🚀', '🚀'];
 
-const cartasBarajadas = simbolos.sort(() => Math.random() - 0.5);
+let cartasBarajadas = [];
+let paresActuales = 8; 
 
 const tablero = document.querySelector('#tablero');
 const modal = document.querySelector('#victoria');
 const textoIntentos = document.querySelector('#numIntentos');
 const btnReiniciar = document.querySelector('#btnReiniciar');
+const controlesDificultad = document.querySelector('#controles'); 
+
 
 function iniciarTablero() {
     tablero.innerHTML = ''; 
 
-    cartasBarajadas.forEach((simbolo, indice) => {
+   
+    const seleccion = bancoSimbolos.slice(0, paresActuales);
+   // Duplicamos los símbolos para tener parejas
+    const simbolosJuego = [...seleccion, ...seleccion];
+
+    cartasBarajadas = simbolosJuego.sort(() => Math.random() - 0.5);
+
+    // Calcular columnas
+    
+    let columnas = 4; 
+    if (cartasBarajadas.length > 16) columnas = 5; 
+    if (cartasBarajadas.length > 20) columnas = 6; 
+    
+    tablero.style.gridTemplateColumns = `repeat(${columnas}, 100px)`;
+
+    cartasBarajadas.forEach((simbolo) => {
         const carta = document.createElement('div');
         carta.classList.add('carta');
         carta.dataset.valor = simbolo;
@@ -21,12 +38,22 @@ function iniciarTablero() {
     });
 }
 
+
+controlesDificultad.addEventListener('click', (evento) => {
+
+    if (evento.target.classList.contains('btnDificultad')) {
+        // Actualizamos la variable global paresActuales según el botón clicado
+        paresActuales = parseInt(evento.target.dataset.pares);
+        reiniciarJuego();
+    }
+});
+
+// Arrancamos el primer tablero
 iniciarTablero();
 
 let primeraCarta = null;
 let segundaCarta = null;
 let intentos = 0;
-
 tablero.addEventListener('click', (evento) => {
     const cartaClicada = evento.target;
 
@@ -49,7 +76,6 @@ tablero.addEventListener('click', (evento) => {
         
         console.log("Comprobando:", primeraCarta.dataset.valor, "y", segundaCarta.dataset.valor);
         if (primeraCarta.dataset.valor === segundaCarta.dataset.valor) {
-            console.log("Bien!");
             primeraCarta = null;
             segundaCarta = null;
             
@@ -84,6 +110,14 @@ function reiniciarJuego() {
     intentos = 0;
     primeraCarta = null;
     segundaCarta = null;
-    cartasBarajadas.sort(() => Math.random() - 0.5);
-    iniciarTablero();
+    iniciarTablero(); 
 }
+
+document.addEventListener('keydown', (evento) => {
+    if (evento.key.toLowerCase() === 'n') {
+
+        // classList.toggle añade la clase si no esta, y la quita si ya esta
+        document.body.classList.toggle('modo-oscuro');
+        console.log("¡Modo oscuro alternado!");
+    }
+});
