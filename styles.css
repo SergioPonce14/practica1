@@ -13,7 +13,7 @@ header {
     margin: 20px 0;
 }
 
-
+/* Tablero y Cartas */
 #tablero {
     display: grid;
     grid-template-columns: repeat(4, 100px);
@@ -43,4 +43,62 @@ header {
     background-color: #fff;
     color: #333; 
     transform: rotateY(180deg);
+}
+
+
+/* Ventana de Victoria y boton para reiniciar */
+
+
+/* ocultar ventana  victoria */
+.oculto {
+    display: none !important;
+}
+/* Fondo oscuro de la ventana  */
+#victoria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; /* Esto centra el contenido */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/*  cajita blanca */
+.contenido {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+}
+
+.contenido h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.contenido p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+#btnReiniciar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnReiniciar:hover {
+    background-color: #45a049;
 }
