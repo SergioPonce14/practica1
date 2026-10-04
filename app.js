@@ -74,7 +74,6 @@ tablero.addEventListener('click', (evento) => {
         
         intentos++; 
         
-        console.log("Comprobando:", primeraCarta.dataset.valor, "y", segundaCarta.dataset.valor);
         if (primeraCarta.dataset.valor === segundaCarta.dataset.valor) {
             primeraCarta = null;
             segundaCarta = null;
@@ -118,6 +117,5 @@ document.addEventListener('keydown', (evento) => {
 
         // classList.toggle añade la clase si no esta, y la quita si ya esta
         document.body.classList.toggle('modo-oscuro');
-        console.log("¡Modo oscuro alternado!");
     }
 });

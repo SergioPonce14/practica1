@@ -24,3 +24,8 @@ a encontrar errores y posibles bugs dentro del juego
 ## Autopsia
 1. No metí un addEventListener dentro de cada carta para evitar tener un gran numero de listeners,
    decidí meter un listener en el tablero que escuchase los clics de cada carta mediante evento.target
+
+2.  En un principio decidí dejar el numero de columnas fijo en el css con `grid-template-columns: repeat(4, 100px)`
+    conforme fuí desarrollando la web decidí que era buena idea añadir dificultades dentro de la web en las que el tablero
+    fuera mas grande, por eso al final decidí calcular el numero de columnas dentro del javascript e inyectar el estilo 
+    de la cuadrícula dinamicamente con `tablero.style.gridTemplateColumns`

@@ -6,6 +6,8 @@ body {
     align-items: center;
     margin: 0;
     min-height: 100vh;
+    /* Transicion para modo oscuro */
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 header {
@@ -139,11 +141,6 @@ header {
 
 
 /*  MODO OSCURO  */
-/* Transicion para modo oscuro */
-body {
-   
-    transition: background-color 0.3s, color 0.3s; 
-}
 
 
 
